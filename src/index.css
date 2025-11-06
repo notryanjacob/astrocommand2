@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 27% 8%;
+    --foreground: 180 100% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 220 27% 8%;
+    --popover-foreground: 180 100% 95%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 220 27% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 180 100% 95%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 180 20% 65%;
+
+    --accent: 189 94% 43%;
+    --accent-foreground: 220 27% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 180 100% 95%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 189 94% 43%;
+
+    --radius: 0.5rem;
+
+    /* Space theme specific colors */
+    --space-blue: 189 94% 43%;
+    --space-cyan: 180 100% 50%;
+    --space-purple: 270 60% 50%;
+    --space-orange: 25 95% 53%;
+    --warning: 45 93% 47%;
+    --success: 142 71% 45%;
+    
+    /* Gradients */
+    --gradient-space: linear-gradient(135deg, hsl(220 27% 8%), hsl(240 30% 12%));
+    --gradient-accent: linear-gradient(135deg, hsl(189 94% 43%), hsl(180 100% 50%));
+    --gradient-card: linear-gradient(180deg, hsl(220 25% 12%), hsl(220 25% 8%));
+    
+    /* Glow effects */
+    --glow-primary: 0 0 20px hsl(189 94% 43% / 0.5);
+    --glow-accent: 0 0 30px hsl(180 100% 50% / 0.4);
+    --glow-warning: 0 0 20px hsl(45 93% 47% / 0.5);
+    --glow-danger: 0 0 20px hsl(0 72% 51% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(220 27% 8%), hsl(240 30% 12%));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  .monospace {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .glow-warning {
+    box-shadow: var(--glow-warning);
+  }
+  
+  .glow-danger {
+    box-shadow: var(--glow-danger);
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: var(--glow-primary);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 30px hsl(189 94% 43% / 0.7);
+    }
+  }
+  
+  .gradient-space {
+    background: var(--gradient-space);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+}
